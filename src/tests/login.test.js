@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { step } from "mocha-steps";
 import Page from "../builder";
 
-describe("Mocha steps demo", () => {
+describe("Login tests", () => {
     let page;
 
     before(async () => {
@@ -33,5 +33,9 @@ describe("Mocha steps demo", () => {
 
         await page.goto("http://zero.webappsecurity.com/bank/account-summary.html");
         expect(await page.isElementVisible(".nav-tabs")).to.be.true;
+    });
+
+    step("should have 6 navbar links", async () => {
+        expect(await page.getCount(".nav-tabs li")).eq(6);
     });
 });
